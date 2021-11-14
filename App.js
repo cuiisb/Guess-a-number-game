@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Image,Button, TouchableOpacity, Text, View, StyleSheet } from 'react-native';
+import {Button, TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 
 import FirstScreen from './assets/Screen';
@@ -24,6 +24,7 @@ const buttonClick=(input)=>{
 
   else
     setinput(input);
+    setresult("");
 };
 const GenerateRandomNum=()=>{
 var randnum=Math.floor(Math.random()*9)+1;
@@ -35,14 +36,14 @@ const Result=()=>{
   setguesses(getguesses +  ' ' + getinput);
   var score;
   if (getinput==  NumberHolder){
-    setresult("congrats!! ypu guessed it right");
+    setresult("congrats!!  right guess");
     score=10 - getTotalHints*2;
     setTotalScore(score);
     setRoundScore(getRoundScore + '' + score)
     setinput(-2);
   }
   else{
-     setresult("Oh no!! you guessed it wrong");
+     setresult("Oh no!! wrong guess");
     score=0;
     setTotalScore(score);
     setRoundScore(getRoundScore + '' + score)
@@ -192,6 +193,7 @@ setRoundScore('');
 setguesses('');
 setTotalHints(0);
 setTotalScore(0);
+
   }}/>
   </View>
   </View>
@@ -223,11 +225,7 @@ const styles = StyleSheet.create({
   },
 
 
- buttonsRowContainer: {
-    paddingTop: 5,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
+ 
   buttonContainer: {
     width: '33%',
     margin: 2,
@@ -263,10 +261,5 @@ fontSize: 100,
 paddingTop:"-60px",
   },
 
-  paragraph: {
-    margin: 24,
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
+ 
 });
